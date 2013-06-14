@@ -1,0 +1,56 @@
+<?php
+
+$title = 'Usuário';
+$form = $this->formUsuario;
+
+$form->setAttribute('action', $this->url('usuario', array('action' => 'add')));
+$form->setAttribute('method', 'post');
+
+//echo $this->form()->openTag($form),
+//     $this->formCollection($form),   
+//     $this->form()->closeTag();
+
+?> 
+
+<div class="unit">
+  <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><a href="<?php echo $this->url('usuario');?>">&times;</a></button>
+      <h1><?php echo $this->escapeHtml($title); ?></h1>
+  </div>
+  <div class="modal-body">
+      <?php echo $this->form()->openTag($form); ?>
+      <div class="control-group">
+        <label class="control-label">Nome</label>
+        <div class="controls">
+            <?php echo $this->formRow($form->get('nome')); ?>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Email</label>
+        <div class="controls">
+          <?php echo $this->formRow($form->get('email')); ?>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Senha</label>
+        <div class="controls">
+          <?php echo $this->formRow($form->get('senha')); ?>
+        </div>
+      </div> 
+      <div class="control-group">
+        <label class="control-label">Confirma Senha:</label>
+        <div class="controls">
+          <?php echo $this->formRow($form->get('confirma_senha')); ?>
+        </div>
+      </div>       
+      <div class="control-group">
+        <div class="controls">
+          <?php echo $this->formSubmit($form->get('enviar')); ?>
+        </div>
+      </div>
+      <?php echo $this->form()->closeTag(); ?>
+  </div>    
+  <div class="modal-footer">     
+    <a href="<?php echo $this->url('usuario');?>" class="btn">Fechar</a>    
+  </div>
+</div>

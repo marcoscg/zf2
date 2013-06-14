@@ -1,0 +1,45 @@
+<?php
+$title = 'Álbum';
+$this->headTitle($title);
+?>
+<div class="unit">
+<!--<div class="modal">-->
+  <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><a href="<?php echo $this->url('home');?>">&times;</a></button>
+      <h1><?php echo $this->escapeHtml($title); ?></h1>
+         <form class="form-search">
+           <label class="control-label">Buscar: </label>
+           <input type="text" class="input-medium search-query">
+           <button type="submit" class="btn">Search</button>
+      </form>      
+  </div>
+  <div class="modal-body">             
+     <table class="table table-hover">
+        <thead>
+            <tr>
+              <th>Códgio</th>
+              <th>Título</th>
+              <th>Artista</th>
+              <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <?php foreach ($albums as $album) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($album->id);?></td>
+            <td><?php echo $this->escapeHtml($album->title);?></td>
+            <td><?php echo $this->escapeHtml($album->artist);?></td>
+            <td>
+                <a class="btn btn-link" href="<?php echo $this->url('album',
+                    array('action'=>'edit', 'id' => $album->id));?>"><i class="icon-edit"></i></a>
+                <a class="btn btn-link" href="<?php echo $this->url('album',
+                    array('action'=>'delete', 'id' => $album->id));?>"><i class="icon-trash"></i></a>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+     </table>
+  </div>
+  <div class="modal-footer">     
+    <a href="<?php echo $this->url('home');?>" class="btn">Fechar</a>
+    <a href="<?php echo $this->url('album', array('action'=>'add'));?>" class="btn btn-primary">Novo Album</a>
+  </div>
+</div>

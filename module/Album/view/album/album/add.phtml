@@ -1,0 +1,54 @@
+<?php
+$title = 'Novo album';
+$this->headTitle($title);
+?>
+<?php
+//$form = $this->form;
+//$form->setAttribute('action', $this->url('album', array('action' => 'add')));
+//$form->prepare();
+//echo $this->form()->openTag($form);
+//echo $this->formHidden($form->get('id'));
+//echo $this->formRow($form->get('title'));
+//echo $this->formRow($form->get('artist'));
+//echo $this->formSubmit($form->get('submit'));
+//echo $this->form()->closeTag();
+
+?>
+
+<?php
+$url = $this->url('album', array(
+    'action' => 'add',
+));
+?>
+
+<div class="unit">
+  <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><a href="<?php echo $this->url('album');?>">&times;</a></button>
+      <h1><?php echo $this->escapeHtml($title); ?></h1>
+  </div>
+  <div class="modal-body">
+    <form action="<?php echo $url; ?>" method="post" name="album" class="form-horizontal" id="album">
+      <div class="control-group">
+        <label class="control-label" for="inputTitle">Título</label>
+        <div class="controls">
+          <input name="id" type="hidden" value="">
+          <input type="text" id="title" name="title">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputArtist">Artista</label>
+        <div class="controls">
+          <input type="text" id="artist" name="artist">
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-success">Gravar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">     
+    <a href="<?php echo $this->url('album');?>" class="btn">Fechar</a>    
+  </div>
+</div>
