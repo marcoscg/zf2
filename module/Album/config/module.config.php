@@ -41,18 +41,24 @@ return array(
     
     // Doctrine config
     'doctrine' => array(
-            'driver' => array(
-                __NAMESPACE__ . '_driver' => array(
-                    'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                    'cache' => 'array',
-                    'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity')
-                ),
-                'orm_default' => array(
-                    'drivers' => array(
-                        __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
-                    )
+        'driver' => array(
+            'album_entities' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/Album/Entity')
+            ),
+            'album_repositories' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/Album/Entity')
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    __NAMESPACE__ . '\Entity' => 'album_entities',
+                    __NAMESPACE__ . '\Model'  => 'album_repositories',
                 )
             )
+        )
     ),    
 );
 ?>

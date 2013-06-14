@@ -34,14 +34,14 @@ $url = $this->url('album', array(
       <div class="control-group">
         <label class="control-label" for="inputTitle">Título</label>
         <div class="controls">
-          <input name="id" type="hidden" value="<?php echo $this->escapeHtml($album->id);?>">
-          <input type="text" id="title" name="title" value="<?php echo $this->escapeHtml($album->title);?>">
+          <input name="id" type="hidden" value="<?php echo $this->escapeHtml($album->getId());?>">
+          <input type="text" id="title" name="title" value="<?php echo $this->escapeHtml($album->getTitle());?>">
         </div>
       </div>
       <div class="control-group">
         <label class="control-label" for="inputArtist">Artista</label>
         <div class="controls">
-          <input type="text" id="artist" name="artist" value="<?php echo $this->escapeHtml($album->artist);?>">
+          <input type="text" id="artist" name="artist" value="<?php echo $this->escapeHtml($album->getArtist());?>">
         </div>
       </div>
       <div class="control-group">

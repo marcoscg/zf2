@@ -60,9 +60,7 @@ class AlbumController extends AbstractActionController
             $form->setData($request->getPost());
             if ($form->isValid()) { 
                 $album->populate($form->getData()); 
-                $this->getEntityManager()->persist($album);
-                $this->getEntityManager()->flush();
-
+                $this->getEntityManager()->getRepository('Album\Entity\Album')->salvarAlbum($album);
                 // Redirect to list of albums
                 return $this->redirect()->toRoute('album'); 
             }
@@ -91,7 +89,7 @@ class AlbumController extends AbstractActionController
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 $form->bindValues();
-                $this->getEntityManager()->flush();
+                $this->getEntityManager()->getRepository('Album\Entity\Album')->editarAlbum($album);
 
                 // Redirect to list of albums
                 return $this->redirect()->toRoute('album');
@@ -119,8 +117,7 @@ class AlbumController extends AbstractActionController
                 $id = (int)$request->getPost('id');
                 $album = $this->getEntityManager()->find('Album\Entity\Album', $id);
                 if ($album) {
-                    $this->getEntityManager()->remove($album);
-                    $this->getEntityManager()->flush();
+                    $this->getEntityManager()->getRepository('Album\Entity\Album')->removerAlbum($album);
                 }
             }
 
