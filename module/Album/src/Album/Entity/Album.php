@@ -11,7 +11,7 @@ use Zend\InputFilter\InputFilterInterface;
 /**
  * A music album.
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Album\Model\AlbumService")
  * @ORM\Table(name="album")
  * @property string $artist
  * @property string $title
@@ -37,28 +37,6 @@ class Album implements InputFilterAwareInterface
      * @ORM\Column(type="string")
      */
     protected $title;
-
-    /**
-     * Magic getter to expose protected properties.
-     *
-     * @param string $property
-     * @return mixed
-     */
-    public function __get($property) 
-    {
-        return $this->$property;
-    }
-
-    /**
-     * Magic setter to save protected properties.
-     *
-     * @param string $property
-     * @param mixed $value
-     */
-    public function __set($property, $value) 
-    {
-        $this->$property = $value;
-    }
 
     /**
      * Convert the object to an array.
@@ -145,4 +123,60 @@ class Album implements InputFilterAwareInterface
 
         return $this->inputFilter;
     } 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set artist
+     *
+     * @param string $artist
+     * @return Album
+     */
+    public function setArtist($artist)
+    {
+        $this->artist = $artist;
+
+        return $this;
+    }
+
+    /**
+     * Get artist
+     *
+     * @return string 
+     */
+    public function getArtist()
+    {
+        return $this->artist;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Album
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 }
