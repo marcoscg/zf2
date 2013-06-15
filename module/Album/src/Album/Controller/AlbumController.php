@@ -130,5 +130,6 @@ class AlbumController extends AbstractActionController
             'album' => $this->getEntityManager()->find('Album\Entity\Album', $id)->getArrayCopy()
         );
     }
+    
 }
 ?>

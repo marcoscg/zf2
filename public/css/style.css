@@ -3,6 +3,13 @@ body1 {
     padding-bottom: 40px;
 }
 
+#wrap {
+    min-height: 100%;
+    height: auto ;
+    height: 100%;
+    margin: 0 auto -60px;
+}
+
 .zf-green {
     color: #68b604;
 }
