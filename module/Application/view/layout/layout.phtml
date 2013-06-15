@@ -3,6 +3,67 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">   
+        
+        <style type="text/css">
+            /* Sticky footer styles
+            -------------------------------------------------- */
+
+            html,
+            body {
+              height: 100%;
+              /* The html and body elements cannot have any padding or margin. */
+            }
+
+            /* Wrapper for page content to push down footer */
+            #wrap {
+              min-height: 100%;
+              height: auto !important;
+              height: 100%;
+              /* Negative indent footer by it's height */
+              margin: 0 auto -40px;
+            }
+
+            /* Set the fixed height of the footer here */
+            #push,
+            #footer {
+              height: 40px;
+            }
+            #footer {
+              background-color: #f5f5f5;
+            }
+
+            /* Lastly, apply responsive CSS fixes as necessary */
+            @media (max-width: 767px) {
+              #footer {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+              }
+            }
+            
+            /* Custom page CSS
+            -------------------------------------------------- */
+            /* Not required for template or sticky footer method. */
+
+            #wrap > .container {
+              padding-top: 40px;
+            }
+            .container .credit {
+              margin: 10px 0;
+            }
+
+            code {
+              font-size: 80%;
+            } 
+            
+            canvas{
+		}
+        </style>         
+        
         <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
@@ -11,39 +72,78 @@
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
                         ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
                         ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')?>
 
         <!-- Scripts -->
         <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
                                       ->prependFile($this->basePath() . '/js/bootstrap.min.js')
-                                      ->prependFile($this->basePath() . '/js/jquery.min.js') ?>
+                                      ->prependFile($this->basePath() . '/js/jquery.min.js')
+                                      ->prependFile($this->basePath() . '/js/Chart.js')
+                                      ->prependFile($this->basePath() . '/js/Chart.min.js')?>
+        
+       
 
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
+        <div id="wrap">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('AGR Sistemas') ?></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav">
+                                <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Inicio') ?></a></li>
+                                <li class="dropdown">
+                                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Arquivos <b class="caret"></b></a>
+                                  <ul class="dropdown-menu">
+                                    <li><a href="<?php echo $this->url('album') ?>"><?php echo $this->translate('Album') ?></a></li> 
+                                    <li><a href="<?php echo $this->url('pais') ?>"><?php echo $this->translate('Pais') ?></a></li> 
+                                    <li><a href="<?php echo $this->url('usuario') ?>"><?php echo $this->translate('Usuario') ?></a></li> 
+                                    <li class="divider"></li>
+                                    <li class="dropdown-submenu">
+                                      <a tabindex="-1" href="#">More options</a>
+                                      <ul class="dropdown-menu">
+                                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                                      </ul>
+                                    </li>
+                                  </ul>
+                                </li>
+                                <li class="dropdown">
+                                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Relatório <b class="caret"></b></a>
+                                  <ul class="dropdown-menu">
+                                    <li><a href=""><?php echo $this->translate('Album') ?></a></li> 
+                                    <li><a href=""><?php echo $this->translate('Pais') ?></a></li> 
+                                    <li><a href=""><?php echo $this->translate('Usuario') ?></a></li> 
+                                  </ul>
+                                </li>
+                                <li><a href="<?php echo $this->url('ajuda') ?>">Ajuda</a></li>
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
                 </div>
             </div>
+            
+            <div class="container">
+                <?php echo $this->content; ?>                                
+            </div> <!-- /container -->
+            
+            <div id="push"></div>
         </div>
-        <div class="container">
-            <?php echo $this->content; ?>
-            <hr>
-            <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
-            </footer>
-        </div> <!-- /container -->
+        
+        <div id="footer">
+          <div class="container">
+            <p class="muted credit">&copy; 2005 - <?php echo date('Y') ?> by AGR Sistemas Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+          </div>
+        </div>       
         <?php echo $this->inlineScript() ?>
     </body>
 </html>
