@@ -1,10 +1,6 @@
-body1 {
+body {
     padding-top: 60px;
     padding-bottom: 40px;
-}
-
-body {
-   /* background-image: url("../img/background.jpg");  */
 }
 
 .zf-green {
@@ -39,5 +35,3 @@ div.container a.brand {
     margin-left: 0;
     padding: 8px 20px 12px 40px;
 }
-
-
