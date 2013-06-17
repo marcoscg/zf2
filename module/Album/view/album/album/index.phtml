@@ -44,34 +44,52 @@ $this->headTitle($title);
   </div>
 </div-->
 <div class="topo-table">
+    <script>
+		jQuery(function($){
+			$('select').each(function(i, e){
+				if (!($(e).data('convert') == 'no')) {
+					$(e).hide().wrap('<div class="btn-group" id="select-group-' + i + '" />');
+					var select = $('#select-group-' + i);
+					var current = ($(e).val()) ? $(e).val(): '&nbsp;';
+					select.html('<input type="hidden" value="' + $(e).val() + '" name="' + $(e).attr('name') + '" id="' + $(e).attr('id') + '" class="' + $(e).attr('class') + '" /><a class="btn" href="javascript:;">' + current + '</a><a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:;"><span class="caret"></span></a><ul class="dropdown-menu"></ul>');
+					$(e).find('option').each(function(o,q) {
+						select.find('.dropdown-menu').append('<li><a href="javascript:;" data-value="' + $(q).attr('value') + '">' + $(q).text() + '</a></li>');
+						if ($(q).attr('selected')) select.find('.dropdown-menu li:eq(' + o + ')').click();
+					});
+					select.find('.dropdown-menu a').click(function() {
+						select.find('input[type=hidden]').val($(this).data('value')).change();
+						select.find('.btn:eq(0)').text($(this).text());
+					});
+				}
+			});
+		});
+	</script>
     <a href="<?php echo $this->url('album', array('action' => 'add')); ?>" class="btn btn-primary" title="Adicionar Album">Novo Album</a>
-
+    
     <div class="input-append pull-right">
-            <div class="btn-group">
-                <a href="<?php echo $this->url('album', 
-                        array('action' => 'index'));?>" class="btn" title="Listar Módulo">Buscar</a>
-                <input class="span2" placeholder="Localizar Album" id="appendedInputButtons" type="text">
-                <div class="btn-group">
-                    <button class="btn">Filtro</button>
-                    <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
-                    <ul class="dropdown-menu pull-right" style="min-width: 100px">
-                        <li class="active"><a href="#">Código</a></li>
-                        <li><a href="#">Título</a></li>
-                        <li><a href="#">Artista</a></li>
-                    </ul>
-                </div>
-            </div>
-        
         <div class="btn-group">
-            <button class="btn">005</button>
-            <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
-            <ul class="dropdown-menu pull-right" style="min-width: 74px">
-                <li class="active"><a href="#">005</a></li>
-                <li><a href="#">010</a></li>
-                <li><a href="#">025</a></li>
-                <li><a href="#">050</a></li>
-                <li><a href="#">100</a></li>
-            </ul>
+            <label class="btn btn-inverse">Filtros:</label>
+            <select class="selectpicker" data-style="btn-primary">
+                <option>Artistas</option>
+                <option>Código</option>
+                <option>Título</option>
+            </select>
+        </div>
+        <div class="btn-group">
+            <input class="span2" placeholder="Localizar Album" id="appendedInputButtons" type="text">
+            <a href="<?php echo $this->url('album', 
+                    array('action' => 'index'));?>" class="btn" title="Listar Módulo">Buscar</a>
+        </div>
+        <div class="btn-group">
+            <label class="btn btn-inverse">Limites:</label>
+            <select class="selectpicker" >
+                <option>005</option>
+                <option>010</option>
+                <option>025</option>
+                <option>050</option>
+                <option>100</option>
+                <option>Todos</option>
+            </select>
         </div>
     </div>
 </div>
