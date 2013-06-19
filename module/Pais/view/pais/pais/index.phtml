@@ -9,32 +9,44 @@
   </div>
   <div class="modal-body">
   
-	<canvas id="canvas" height="350" width="600"></canvas>
+	<canvas id="meuCanvasGraficoIdades" width="700" height="350">[No canvas support]</canvas>
 
 
 	<script>
-
-		var barChartData = {
-			labels : ["January","February","March","April","May","June","July"],
-			datasets : [
-				{
-					fillColor : "rgba(220,220,220,0.5)",
-					strokeColor : "rgba(220,220,220,1)",
-					data : [65,59,90,81,56,55,40]
-				},
-				{
-					fillColor : "rgba(151,187,205,0.5)",
-					strokeColor : "rgba(151,187,205,1)",
-					data : [28,48,40,19,96,27,100]
-				}
-			]
-			
-		}
-
-	    var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Bar(barChartData);
+            var dadosIdades = [20,22,34,22,18]
+            var idadevilourenco = 20;
+            var idadembrena = 22;
+            var idadefausto = 34;
+            var idadegenes = 22;
+            var idadeandre = 18;
+        </script>	
 	
-	</script>  
-  
+        <script>		
+            window.onload = function ()
+           {
+               var meuGraficoIdades = new RGraph.Bar('meuCanvasGraficoIdades', dadosIdades);
+               meuGraficoIdades.Set('chart.background.barcolor1', 'white');
+               meuGraficoIdades.Set('chart.background.barcolor2', 'white');
+               meuGraficoIdades.Set('chart.title', 'Exemplo Idades com gráficos em HTML5 - www.vilourenco.com.br');
+               meuGraficoIdades.Set('chart.title.vpos', 0.6);
+               meuGraficoIdades.Set('chart.labels', ['@vilourenco', '@monteirobrena', '@g0nc1n', '@webgenes', '@andredmolin']);
+               meuGraficoIdades.Set('chart.tooltips', ['@vilourenco tem ' + idadevilourenco + ' anos', '@monteirobrena tem ' + idadembrena + ' anos', '@g0nc1n tem ' + idadefausto + ' anos', '@webgenes tem ' + idadegenes + ' anos', '@andredmolin tem ' + idadeandre + ' anos']);
+               meuGraficoIdades.Set('chart.text.angle', 45);
+               meuGraficoIdades.Set('chart.gutter', 35);
+               meuGraficoIdades.Set('chart.shadow', true);
+               meuGraficoIdades.Set('chart.shadow.blur', 5);
+               meuGraficoIdades.Set('chart.shadow.color', '#aaa');
+               meuGraficoIdades.Set('chart.shadow.offsety', -3);
+               meuGraficoIdades.Set('chart.colors', ['#00CED1']);
+               meuGraficoIdades.Set('chart.key.position', 'gutter');
+               meuGraficoIdades.Set('chart.text.size', 10);
+               meuGraficoIdades.Set('chart.text.font', 'Georgia');
+               meuGraficoIdades.Set('chart.text.angle', 0);
+               meuGraficoIdades.Set('chart.grouping', 'stacked');
+               meuGraficoIdades.Set('chart.strokecolor', 'rgba(0,0,0,0)');
+               meuGraficoIdades.Draw();           
+           }
+       </script>  
   
   </div>
   <div class="modal-footer">

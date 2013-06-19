@@ -78,10 +78,13 @@
         <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
                                       ->prependFile($this->basePath() . '/js/bootstrap.min.js')
                                       ->prependFile($this->basePath() . '/js/jquery.min.js')
-                                      ->prependFile($this->basePath() . '/js/Chart.js')
-                                      ->prependFile($this->basePath() . '/js/Chart.min.js')?>
-        
-       
+                                      ->prependFile($this->basePath() . '/js/libraries/RGraph.common.core.js')
+                                      ->prependFile($this->basePath() . '/js/libraries/RGraph.common.dynamic.js')
+                                        ->prependFile($this->basePath() . '/js/libraries/RGraph.annotate.core.js')
+                                        ->prependFile($this->basePath() . '/js/libraries/RGraph.context.core.js')
+                                        ->prependFile($this->basePath() . '/js/libraries/RGraph.tooltips.core.js')
+                                        ->prependFile($this->basePath() . '/js/libraries/RGraph.resizing.core.js')
+                                        ->prependFile($this->basePath() . '/js/libraries/RGraph.bar.js')?>
 
     </head>
     <body>
@@ -103,7 +106,7 @@
                                   <ul class="dropdown-menu">
                                     <li><a href="<?php echo $this->url('album') ?>"><?php echo $this->translate('Album') ?></a></li> 
                                     <li><a href="<?php echo $this->url('pais') ?>"><?php echo $this->translate('Pais') ?></a></li> 
-                                    <li><a href="<?php echo $this->url('usuario') ?>"><?php echo $this->translate('Usuario') ?></a></li> 
+                                    <li><a href="<?php echo $this->url('usuario') ?>"><?php echo $this->translate('Usuario') ?></a></li>                                     
                                     <li class="divider"></li>
                                     <li class="dropdown-submenu">
                                       <a tabindex="-1" href="#">More options</a>
@@ -118,14 +121,14 @@
                                   </ul>
                                 </li>
                                 <li class="dropdown">
-                                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Relatório <b class="caret"></b></a>
+                                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">RelatÃ³rio <b class="caret"></b></a>
                                   <ul class="dropdown-menu">
                                     <li><a href=""><?php echo $this->translate('Album') ?></a></li> 
                                     <li><a href=""><?php echo $this->translate('Pais') ?></a></li> 
                                     <li><a href=""><?php echo $this->translate('Usuario') ?></a></li> 
                                   </ul>
                                 </li>
-                                <!--li><a href="?php echo $this->url('ajuda') ?>">Ajuda</a></li-->
+                                <li><a href="<?php echo $this->url('ajuda') ?>"><?php echo $this->translate('Ajuda') ?></a></li>
                             </ul>
                         </div><!--/.nav-collapse -->
                     </div>
