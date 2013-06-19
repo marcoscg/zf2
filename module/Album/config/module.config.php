@@ -23,6 +23,9 @@ return array(
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'     => '[0-9]+',
+                        'page' => '[0-9]+',
+                        'order_by' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'order' => 'ASC|DESC',
                     ),
                     'defaults' => array(
                         'controller' => 'Album\Controller\Album',
@@ -36,6 +39,9 @@ return array(
     'view_manager' => array(
         'template_path_stack' => array(
             'album' => __DIR__ . '/../view',
+        ),
+        'template_map' => array( 
+            'paginator-slide' => __DIR__ . '/../view/paginations/paginator.phtml',
         ),
     ),
     

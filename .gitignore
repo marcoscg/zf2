@@ -8,4 +8,8 @@ nbproject
 .settings
 composer.lock
 vendor/bin
+<<<<<<< HEAD
 /vendor/
+=======
+vendor
+>>>>>>> f0e3c866b54a480eff5397d4590070d628036a3e

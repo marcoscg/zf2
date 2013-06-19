@@ -11,6 +11,9 @@ use Zend\View\Model\ViewModel;
 use Doctrine\ORM\EntityManager;
 use Album\Form\AlbumForm;
 use Album\Entity\Album;
+use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
+ use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
+ use Zend\Paginator\Paginator;
 
 class AlbumController extends AbstractActionController
 {
@@ -30,21 +33,20 @@ class AlbumController extends AbstractActionController
             $this->em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
         }
         return $this->em;
-    }    
-    
-    public function getAlbumTable()
-    {
-        if (!$this->albumTable) {
-            $sm = $this->getServiceLocator();
-            $this->albumTable = $sm->get('Album\Model\AlbumTable');
-        }
-        return $this->albumTable;
-    }    
+    } 
     
     public function indexAction()
     {
+        $repository = $this->getEntityManager()->getRepository('Album\Entity\Album');
+        $adapter = new DoctrineAdapter(new ORMPaginator($repository->createQueryBuilder('album')));
+        $paginator = new Paginator($adapter);
+        $paginator->setDefaultItemCountPerPage(5);
+
+        $page = (int)$this->params()->fromQuery('page');
+        if($page) $paginator->setCurrentPageNumber($page);
+
         return new ViewModel(array(
-            'albums' => $this->getEntityManager()->getRepository('Album\Entity\Album')->findAll() 
+            'paginator' => $paginator,
         ));        
     }
 
@@ -130,5 +132,6 @@ class AlbumController extends AbstractActionController
             'album' => $this->getEntityManager()->find('Album\Entity\Album', $id)->getArrayCopy()
         );
     }
+    
 }
 ?>
