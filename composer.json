@@ -14,5 +14,4 @@
         "doctrine/doctrine-orm-module": "dev-master",
         "zendframework/zend-developer-tools": "dev-master"
     }
-
 }
