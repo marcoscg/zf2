@@ -4,7 +4,7 @@ body11 {
 }
 
 body {
-   /* background-image: url("../img/background.jpg");  */
+   background-image: url("../img/background.jpg"); 
 }
 
 .zf-green {
@@ -38,6 +38,14 @@ div.container a.brand {
     background: url("../img/zf2-logo.png") no-repeat scroll 0 10px transparent;
     margin-left: 0;
     padding: 8px 20px 12px 40px;
+}
+
+.page-center {
+    margin:auto;
+}
+
+.modal-grande {
+    width: 800px;
 }
 
 

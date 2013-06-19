@@ -80,11 +80,9 @@
                                       ->prependFile($this->basePath() . '/js/jquery.min.js')
                                       ->prependFile($this->basePath() . '/js/libraries/RGraph.common.core.js')
                                       ->prependFile($this->basePath() . '/js/libraries/RGraph.common.dynamic.js')
-                                        ->prependFile($this->basePath() . '/js/libraries/RGraph.annotate.core.js')
-                                        ->prependFile($this->basePath() . '/js/libraries/RGraph.context.core.js')
-                                        ->prependFile($this->basePath() . '/js/libraries/RGraph.tooltips.core.js')
-                                        ->prependFile($this->basePath() . '/js/libraries/RGraph.resizing.core.js')
-                                        ->prependFile($this->basePath() . '/js/libraries/RGraph.bar.js')?>
+                                      ->prependFile($this->basePath() . '/js/libraries/RGraph.common.effects.js')
+                                      ->prependFile($this->basePath() . '/js/libraries/RGraph.common.tooltips.js')
+                                      ->prependFile($this->basePath() . '/js/libraries/RGraph.bar.js')?>
 
     </head>
     <body>
@@ -138,7 +136,7 @@
             <div class="container">
                 <?php echo $this->content; ?>                                
             </div> <!-- /container -->
-            
+
             <div id="push"></div>
         </div>
         

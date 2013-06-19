@@ -42,7 +42,7 @@ $this->headTitle($title);
     <a href="?php echo $this->url('album', array('action'=>'add'));?>" class="btn btn-primary">Novo Album</a>
   </div>
 </div-->
-<div class="unit">
+<div class="hero-unit" style="background-color: white; margin-top: 10px;" >
     <div class="modal-header" >
         <script>
 		jQuery(function($){
@@ -94,7 +94,7 @@ $this->headTitle($title);
             </div>
         </div>
     </div>
-    <div class="modal-body">
+    <div class="modal-body" style="height: 300px">
         <div class="corpo-table">
             <table class="table table-hover table-striped">
                 <thead>
@@ -128,11 +128,8 @@ $this->headTitle($title);
         </div>
     </div>
     <div class="modal-footer">
-            <div class="pagination help-block pull-left">
-                <?php echo $this->paginationControl($this->paginator, 
-                        'Sliding', 'paginator-slide');?>
-            </div>
-        <div class="pagination help-block pull-right">
+        <?php echo $this->paginationControl($this->paginator,'Sliding', 'paginator-slide');?>
+        <div class="pagination pull-right">
             <a href="<?php echo $this->url('home'); ?>" class="btn" title="Fechar Módulo">Fechar</a>
         </div>
     </div>
