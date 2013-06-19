@@ -63,4 +63,15 @@ class AlbumService extends EntityRepository
         }
         return true;
     }
+    
+    public function fechtAlbunsPagination($currentPage = 1, $countPerPage = 2) 
+    {
+        try {
+            
+        } catch (Exception $exc) {
+            $this->_em->rollback();
+            echo $exc->getTraceAsString();
+        }
+        return true;
+    }
 }

@@ -23,13 +23,13 @@
               height: auto !important;
               height: 100%;
               /* Negative indent footer by it's height */
-              margin: 0 auto -60px;
+              margin: 0 auto -40px;
             }
 
             /* Set the fixed height of the footer here */
             #push,
             #footer {
-              height: 60px;
+              height: 40px;
             }
             #footer {
               background-color: #f5f5f5;
@@ -50,10 +50,10 @@
             /* Not required for template or sticky footer method. */
 
             #wrap > .container {
-              padding-top: 60px;
+              padding-top: 40px;
             }
             .container .credit {
-              margin: 20px 0;
+              margin: 10px 0;
             }
 
             code {
@@ -80,6 +80,8 @@
                                       ->prependFile($this->basePath() . '/js/jquery.min.js')
                                       ->prependFile($this->basePath() . '/js/Chart.js')
                                       ->prependFile($this->basePath() . '/js/Chart.min.js')?>
+        
+       
 
     </head>
     <body>
@@ -95,10 +97,35 @@
                         <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('AGR Sistemas') ?></a>
                         <div class="nav-collapse collapse">
                             <ul class="nav">
-                                <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                                <li class="active"><a href="<?php echo $this->url('album') ?>"><?php echo $this->translate('Album') ?></a></li> 
-                                <li class="active"><a href="<?php echo $this->url('pais') ?>"><?php echo $this->translate('Pais') ?></a></li> 
-                                <li class="active"><a href="<?php echo $this->url('usuario') ?>"><?php echo $this->translate('Usuario') ?></a></li> 
+                                <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Inicio') ?></a></li>
+                                <li class="dropdown">
+                                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Arquivos <b class="caret"></b></a>
+                                  <ul class="dropdown-menu">
+                                    <li><a href="<?php echo $this->url('album') ?>"><?php echo $this->translate('Album') ?></a></li> 
+                                    <li><a href="<?php echo $this->url('pais') ?>"><?php echo $this->translate('Pais') ?></a></li> 
+                                    <li><a href="<?php echo $this->url('usuario') ?>"><?php echo $this->translate('Usuario') ?></a></li> 
+                                    <li class="divider"></li>
+                                    <li class="dropdown-submenu">
+                                      <a tabindex="-1" href="#">More options</a>
+                                      <ul class="dropdown-menu">
+                                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                                      </ul>
+                                    </li>
+                                  </ul>
+                                </li>
+                                <li class="dropdown">
+                                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Relatório <b class="caret"></b></a>
+                                  <ul class="dropdown-menu">
+                                    <li><a href=""><?php echo $this->translate('Album') ?></a></li> 
+                                    <li><a href=""><?php echo $this->translate('Pais') ?></a></li> 
+                                    <li><a href=""><?php echo $this->translate('Usuario') ?></a></li> 
+                                  </ul>
+                                </li>
+                                <!--li><a href="?php echo $this->url('ajuda') ?>">Ajuda</a></li-->
                             </ul>
                         </div><!--/.nav-collapse -->
                     </div>
@@ -114,7 +141,7 @@
         
         <div id="footer">
           <div class="container">
-            <p class="muted credit">&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+            <p class="muted credit">&copy; 2005 - <?php echo date('Y') ?> by AGR Sistemas Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
           </div>
         </div>       
         <?php echo $this->inlineScript() ?>
