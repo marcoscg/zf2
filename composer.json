@@ -12,7 +12,8 @@
         "php": ">=5.3.3",
         "zendframework/zendframework": "dev-master",
         "doctrine/doctrine-orm-module": "dev-master",
-        "zendframework/zend-developer-tools": "dev-master"
+        "zendframework/zend-developer-tools": "dev-master",
+        "hounddog/doctrine-data-fixture-module": "dev-master"
     }
 
 }

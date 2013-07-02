@@ -3,35 +3,56 @@
 namespace Usuario;
 
 return array(
-    'controllers' => array(
-        'invokables' => array(
-            'Usuario\Controller\Usuario' => 'Usuario\Controller\UsuarioController',
-        ),
-    ),
-    
-    // The following section is new and should be added to your file
     'router' => array(
         'routes' => array(
-            'usuario' => array(
-                'type'    => 'segment',
+            'usuario-register' => array(
+                'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/usuario[/][:action][/:id]',
-                    'constraints' => array(
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'     => '[0-9]+',
-                    ),
+                    'route'    => '/register',
                     'defaults' => array(
-                        'controller' => 'Usuario\Controller\Usuario',
-                        'action'     => 'index',
-                    ),
+                        '__NAMESPACE__' => 'Usuario\Controller',
+                        'controller' => 'Index',
+                        'action' => 'register',
+                    )
                 ),
             ),
         ),
-    ),    
-    
-    'view_manager' => array(
-        'template_path_stack' => array(
-            'usuario' => __DIR__ . '/../view',
+    ),
+    'controllers' => array(
+        'invokables' => array(
+            'Usuario\Controller\Index' => 'Usuario\Controller\IndexController',
         ),
-    ),    
+    ),
+    'view_manager' => array(
+        'display_not_found_reason' => true,
+        'display_exceptions'       => true,
+        'doctype'                  => 'HTML5',
+        'not_found_template'       => 'error/404',
+        'exception_template'       => 'error/index',
+        'template_map' => array(
+            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
+            'error/404'               => __DIR__ . '/../view/error/404.phtml',
+            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+        ),
+        'template_path_stack' => array(
+            __DIR__ . '/../view',
+        ),
+    ),
+    'doctrine' => array(
+        'driver' => array(
+            __NAMESPACE__ . '_driver' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity')
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                ),
+            ),
+        ),
+    ),
+    'data-fixture' => array(
+        'Usuario_fixture' => __DIR__ . '/../src/Usuario/Fixture',
+    ),
 );

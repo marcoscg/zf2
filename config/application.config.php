@@ -5,10 +5,12 @@ return array(
         'ZendDeveloperTools',
         'DoctrineModule',
         'DoctrineORMModule',
+        'DoctrineDataFixtureModule',
         'Application',
         'Album',
         'Usuario',
         'Pais',
+        'Generic',
     ),
 
     // These are various options for the listeners attached to the ModuleManager
